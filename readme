@@ -1,0 +1,78 @@
+
+Create Application Using Express:
+==================================
+1. install express globally
+     > npm install -g express-generator
+
+2. create project
+     > express textperia-app-api --no-view
+
+3. install dependencies:
+     > npm install
+
+4. run the app:
+     > npm start
+
+Set up Database
+===============
+    1.  http://docs.sequelizejs.com/manual/tutorial/migrations.html
+    2.  > npm install --save sequelize           //To install sequelize
+    3.  > npm install --save sequelize-cli       //To install command line interface for sequelize
+    4.  > cd src
+    5.  > npx sequelize-cli init   //To get the models, migrations, seeders, config folders. If it was already there, then we don't need to execute it.
+    6.  http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html
+    7.  Create .sequelizerc configuration file using the following command
+    8.  > cd ..
+	    > touch .sequelizerc
+    9.  Configure your models, migrations, seeders and config folders path in .sequelizerc file as follows
+    10. const path = require('path');
+        module.exports = {
+            'config': path.resolve('./src/config', 'config.json'),
+            'models-path': path.resolve('./src', 'models'),
+            'seeders-path': path.resolve('./src', 'seeders'),
+            'migrations-path': path.resolve('./src', 'migrations')
+        }
+    11. In config.json file, we need to add '"operatorsAliases": false' in order to remove the error - "sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security"
+
+Alter config.json file
+=========================
+    1.  Need to alter the config.json file under ./src/config folder like below
+    2.  {
+            "development": {
+                "username": "hypersonal-admin",
+                "password": "hypersonal@2022",
+                "database":  "Hypersonal_DB",
+                "host": "127.0.0.1",
+                "dialect": "mysql",
+                "logging": false
+            },
+            "test": {
+                "username": "hypersonal-admin",
+                "password": "hypersonal@2022",
+                "database":  "Hypersonal_DB",
+                "host": "127.0.0.1",
+                "dialect": "mysql",
+                "logging": false
+            },
+            "production": {
+                 "username": "hypersonal-admin",
+                "password": "hypersonal@2022",
+                "database":  "Hypersonal_DB",
+                "host": "127.0.0.1",
+                "dialect": "mysql",
+                "logging": false
+            }
+        }
+
+Execute command to add model files
+====================================
+1. npx sequelize-cli model:generate --name BaseUser --attributes first_name:string, last_name:string,email:string,salt:string,hashed_password:string,termsandconditions:boolean,status:string
+
+
+
+To run the application
+====================================
+    1.  > npx sequelize-cli db:create
+    2.  > npx sequelize-cli db:migrate
+    3.  > node ./data/loadData.js master ./data/ids_app.xlsx 
+    4.  > npm start  

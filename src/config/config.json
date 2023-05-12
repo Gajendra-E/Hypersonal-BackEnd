@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "hczpqurl_hypersonal_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "hczpqurl_hypersonal",
+    "password": "AU!XGEdNZ^*=",
+    "database": "hczpqurl_hypersonal",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "username": "hczpqurl_hypersonal",
+    "password": "YL}nct-WgW1Z",
+    "database": "hczpqurl_hypersonal",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
+
